@@ -18,8 +18,8 @@ class UserProfileManager(BaseUserManager):
             raise ValueError("User must have an email address")
 
         #we also need to normalise the email address as the second half of the email is case insensitive. most places gmail etc first half is also case insensitive, but not all.
-        email = self.normalise_email(email)
-        
+        # email = self.normalise_email(email)
+
         #this next bit creates a new model object called user which has the email set to the email of the model being controlled and the name the same
 
         user = self.model(email=email, name=name)
@@ -34,6 +34,7 @@ class UserProfileManager(BaseUserManager):
     def create_superuser(self, email, name, password):
         """Create and save a new superuser with given details"""
         #don't need to specift self below because it is automatically called because it is a class function i.e. part of the same class...its just a python thing
+        # email = self.normalise_email(email)
         user = self.create_user(email, name, password)
         user.is_superuser = True
         #is_superuser is created by the PermissionsMixin parent class in the UserProfile bit (ie the DB will have that on it just cos of PermissionsMixin)
