@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #the icnlude bit above alows access to all url pages?
+    #this bit below says if the api endpoint is his then we go to profiles_api to the urls file
+    # that is the request will go there
+    path('api/', include('profiles_api.urls')),
 ]
